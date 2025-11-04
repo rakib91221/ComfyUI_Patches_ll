@@ -3,7 +3,7 @@ from .node_utils import get_old_method_name, get_new_forward_orig
 from .patch_util import set_hook, clean_hook, is_flux_model
 
 def flux_outer_sample_function_wrapper(wrapper_executor, noise, latent_image, sampler, sigmas, denoise_mask=None,
-                                  callback=None, disable_pbar=False, seed=None):
+                                  callback=None, disable_pbar=False, seed=None, **kwargs):
     cfg_guider = wrapper_executor.class_obj
     diffusion_model = cfg_guider.model_patcher.model.diffusion_model
     # set hook
@@ -11,7 +11,7 @@ def flux_outer_sample_function_wrapper(wrapper_executor, noise, latent_image, sa
 
     try:
         out = wrapper_executor(noise, latent_image, sampler, sigmas, denoise_mask=denoise_mask, callback=callback,
-                               disable_pbar=disable_pbar, seed=seed)
+                               disable_pbar=disable_pbar, seed=seed, **kwargs)
     finally:
         # cleanup hook
         clean_hook(diffusion_model, 'flux_old_forward_orig')

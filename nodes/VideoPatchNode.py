@@ -5,7 +5,7 @@ from .patch_lib.WanVideoPatch import wan_forward
 
 
 def video_outer_sample_function_wrapper(wrapper_executor, noise, latent_image, sampler, sigmas, denoise_mask=None,
-                                  callback=None, disable_pbar=False, seed=None):
+                                  callback=None, disable_pbar=False, seed=None, **kwargs):
     cfg_guider = wrapper_executor.class_obj
     diffusion_model = cfg_guider.model_patcher.model.diffusion_model
     # set hook
@@ -16,7 +16,7 @@ def video_outer_sample_function_wrapper(wrapper_executor, noise, latent_image, s
 
     try:
         out = wrapper_executor(noise, latent_image, sampler, sigmas, denoise_mask=denoise_mask, callback=callback,
-                               disable_pbar=disable_pbar, seed=seed)
+                               disable_pbar=disable_pbar, seed=seed, **kwargs)
     finally:
         # cleanup hook
         clean_hook(diffusion_model, 'video_old_forward_orig', get_old_method_name(diffusion_model))

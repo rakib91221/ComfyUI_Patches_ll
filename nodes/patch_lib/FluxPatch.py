@@ -16,6 +16,7 @@ def flux_forward_orig(
     control = None,
     transformer_options={},
     attn_mask: Tensor = None,
+    **kwargs
 ) -> Tensor:
     patches_replace = transformer_options.get("patches_replace", {})
     patches_point = transformer_options.get(PatchKeys.options_key, {})

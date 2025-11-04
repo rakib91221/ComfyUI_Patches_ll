@@ -18,6 +18,7 @@ def hunyuan_forward_orig(
     guiding_frame_index=None,
     control=None,
     transformer_options={},
+    **kwargs
 ) -> Tensor:
     patches_replace = transformer_options.get("patches_replace", {})
     patches_point = transformer_options.get(PatchKeys.options_key, {})
