@@ -129,12 +129,12 @@ def fb_cache_patch_dit_exit(img, transformer_options):
     return img
 
 def fb_cache_prepare_wrapper(wrapper_executor, noise, latent_image, sampler, sigmas, denoise_mask=None,
-                                  callback=None, disable_pbar=False, seed=None):
+                                  callback=None, disable_pbar=False, seed=None, **kwargs):
     cfg_guider = wrapper_executor.class_obj
 
     try:
         out = wrapper_executor(noise, latent_image, sampler, sigmas, denoise_mask=denoise_mask, callback=callback,
-                               disable_pbar=disable_pbar, seed=seed)
+                               disable_pbar=disable_pbar, seed=seed, **kwargs)
     finally:
         diffusion_model = cfg_guider.model_patcher.model.diffusion_model
         if hasattr(diffusion_model, fb_cache_model_temp):
