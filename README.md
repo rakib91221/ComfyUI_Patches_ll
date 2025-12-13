@@ -1,6 +1,6 @@
 [中文文档](README_CN.md)
 
-Add some hooks method. Such as: `TeaCache` and `First Block Cache` for `PuLID-Flux` `Flux` `HunYuanVideo` `LTXVideo` `MochiVideo` `WanVideo`.
+ some hooks method. Such as: `TeaCache` and `First Block Cache` for `PuLID-Flux` `Flux` `HunYuanVideo` `LTXVideo` `MochiVideo` `WanVideo`.
 
 Need upgrade ComfyUI Version>=0.3.17
 
